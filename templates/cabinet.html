@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User cabinet</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+<div>
+    <p>{{ object.first_name }}</p>
+    <p>{{ object.last_name }}</p>
+    <p>{{ object.username }}</p>
+    <p>{{ object.email }}</p>
+    {% for tour in tours %}
+    <p>Тур на: </p>
+        <p>{{ tour}}</p>
+    {% endfor %}
+</div>
+{% else%}
+<p>Ok</p>
+
+{% endif%}
+</body>
+</html>
