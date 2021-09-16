@@ -8,10 +8,8 @@ class Tour(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     tour_date = models.DateTimeField()
-    image = models.ImageField(upload_to='media', null=True, blank=True)
+    # image = models.ImageField(upload_to='media', null=True, blank=True)
     unexpired = models.BooleanField()
-    # registered_users = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,
-    #                                      related_name='registered_users')
 
     @staticmethod
     def get_unexpired_tours():
@@ -36,14 +34,14 @@ class TourRegistration(models.Model):
         return f"{self.tour}  Дата регистрации: {self.created_date}"
 
 
-# class Image(models.Model):
-#     title = models.CharField(max_length=255)
-#     image = models.ImageField(upload_to='media')
-#     tour = models.ForeignKey(Tour, related_name='posts',
-#                              on_delete=models.CASCADE)
-#
-#     class Meta:
-#         db_table = 'images'
-#
-#     def __str__(self):
-#         return f"{self.image.url}"
+class Image(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='media')
+    tour = models.ForeignKey(Tour, related_name='posts',
+                             on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'images'
+
+    def __str__(self):
+        return f"{self.image.url}"

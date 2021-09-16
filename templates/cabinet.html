@@ -15,7 +15,14 @@
     <p>{{ object.email }}</p>
     {% for tour in tours %}
     <p>Тур на: </p>
-        <p>{{ tour}}</p>
+    <p>{{ tour}}</p>
+    <form>
+        <p><input type="button" value="Delete" onClick='location.href="{% url 'delete' tour.id %}"'></p>
+    </form>
+    <!--    <form method="link" href="{% url 'delete' tour.id %}">-->
+    <!--<input type="button" value="Отменить">-->
+    <!--</form>-->
+
     {% endfor %}
 </div>
 {% else%}

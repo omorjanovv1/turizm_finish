@@ -11,12 +11,12 @@
 <body>
 <h1 style="text-align:center">Наши Туры</h1>
 <form>
-    <p><input type="button" value="Зарегистрироваться" onClick='location.href="{% url 'tour_registration' %}"'>
+    <p><input type="button" value="Зарегистрироваться" onClick='location.href="{% url 'tour_registration' %}"'></p>
 </form>
 
 {{detail.description}}
-{%for image in detail.posts %}
-<img src="{{image.url}}" width="100" height="100" alt="mhb">
+{%for image in detail.posts.all %}
+<img src="{{image.image.url}}" width="100" height="100" alt="mhb">
 {% endfor %}
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

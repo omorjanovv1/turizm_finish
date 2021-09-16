@@ -3,6 +3,8 @@ from .models import Tour, TourRegistration
 from .forms import TourForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views import generic
+from django.urls import reverse_lazy
 
 
 def index(request):
@@ -53,24 +55,16 @@ def tour_registration(request):
 
     return render(request, 'customers/tour_registration.html', locals())
 
+
 def tour_registration_success(request):
     return render(request, 'customers/registration_done.html', locals())
+
 
 def already_registered(request):
     return render(request, 'customers/already_registered.html', locals())
 
 
-# def post_list(request):
-#     object_list = Tour.published.all()
-#     paginator = Paginator(object_list, 1)
-#     page = request.GET.get('page')
-#     try:
-#         posts = paginator.page(page)
-#     except PageNotAnInteger:
-#         posts = paginator.page(1)
-#     except EmptyPage:
-#         posts = paginator.page(paginator.num_pages)
-#     return render(request,
-#                   'tours/customers/tours.html',
-#                   {'page': page,
-#                    'posts': posts})
+class TourRegistrationDeleteView(generic.DeleteView):
+    model = TourRegistration
+    template_name = 'customers/delete.html'
+    success_url = reverse_lazy('registration:cabinet')

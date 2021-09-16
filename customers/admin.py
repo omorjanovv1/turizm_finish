@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import TourRegistration
+from .models import TourRegistration, Image
 
 # admin.site.register(Tour)
 admin.site.register(TourRegistration)
-# admin.site.register(Image)
+admin.site.register(Image)
 
 # class ImageAdmin(admin.StackedInline):
 #     model = Image
